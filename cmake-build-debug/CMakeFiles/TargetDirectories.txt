@@ -1,0 +1,3 @@
+C:/Users/tonya/Desktop/a2/cmake-build-debug/CMakeFiles/A2.dir
+C:/Users/tonya/Desktop/a2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/tonya/Desktop/a2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
