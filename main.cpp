@@ -2,8 +2,24 @@
 
 int main(int argc, char* argv[])
 {
-    FileReader *g = FileReader("a2.txt");
-    Weight weight = Plane::stringToWeight("heavy");
-    Plane *plane = new Plane("ABC123", "Boeing 747", weight, 100,1);
-    Request newR = new Request(100, plane, g);
+
+    string filename = argv[1];
+    int numRunways = stoi(argv[2]);
+
+    FileReader* fileReader = FileReader(filename);
+    PriorityQueue* planeWaitingList = new PriorityQueue();
+    PriorityQueue* eventQueue= new PriorityQueue();
+    bool* runway = new bool[numRunways];
+
+    ProcessParams* infoState = new ProcessParams(runway, numRunways, eventQueue, planeWaitingList, fileReader);
+
+    fileReader->getNextEvent();
+    while(!eventQueue->isEmpty())
+    {
+        Event* event = dynamic_cast<Event *>(eventQueue->dequeue());
+        event->process(*infoState);
+
+    }
+
+    return 0;
 }

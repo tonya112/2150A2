@@ -41,3 +41,13 @@ bool Plane::compare(ListItem *other) {
     }
 
 }
+
+int Plane::getSetupTime() const {
+    int initialTime = 1;
+    if(type == 0)
+    {
+        initialTime = 3
+    }
+
+    return initialTime + static_cast<int>(weight);
+}

@@ -37,6 +37,8 @@ public:
 
     int getType() const; //1 takeoff 0 landing
 
+    int getSetupTime() const;
+
     bool compare(ListItem* other) override;
 
     static Weight stringToWeight(const std::string& size) {
@@ -46,6 +48,17 @@ public:
         if (size == "super") return super;
         throw std::invalid_argument("Invalid weight type: " + size);
     }
+
+    static std::string weightToString(Weight weight) {
+        switch (weight) {
+            case small: return "small";
+            case large: return "large";
+            case heavy: return "heavy";
+            case super: return "super";
+            default: return "unknown";
+        }
+    }
+
 
 
 

@@ -15,7 +15,13 @@ private:
 
 public:
     ProcessParams(bool* rw, int size, PriorityQueue* eq, PriorityQueue* wl, FileReader* fr)
-            : runway(rw), sizeRW(size), eventQueue(eq), waitingList(wl), fileReader(fr){}
+            : runway(rw), sizeRW(size), eventQueue(eq), waitingList(wl), fileReader(fr){
+
+        for(int i = 0; i < sizeRW; i++)
+        {
+            runway[i] = true;
+        }
+    }
 
     bool* getRunway();
 

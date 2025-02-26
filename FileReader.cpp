@@ -17,6 +17,9 @@ FileReader::~FileReader() {
 Event* FileReader::getNextEvent() {
     std::string line;
     if (getline(inputFile, line)) { // 读取下一行
+
+        std::cout << line << std::endl;
+
         std::stringstream sst(line);
         string token;
         int time = 0;
@@ -41,15 +44,8 @@ Event* FileReader::getNextEvent() {
         }
         Plane *plane = new Plane(callSign, flightNum, weight, time, type);
 
-        if (type == 0) {
-            return new RequestLanding(time, plane);
-        } else {
-            return new RequestTakeoff(time, plane);
-        }
-
-
-
+        return new Request(time, plane);
 
     }
-    return nullptr; // 没有新事件
+    return nullptr;
 }

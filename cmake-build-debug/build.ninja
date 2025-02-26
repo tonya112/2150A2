@@ -91,6 +91,12 @@ build CMakeFiles/A2.dir/Event.cpp.obj: CXX_COMPILER__A2_unscanned_Debug C$:/User
   OBJECT_DIR = CMakeFiles\A2.dir
   OBJECT_FILE_DIR = CMakeFiles\A2.dir
 
+build CMakeFiles/A2.dir/Service.cpp.obj: CXX_COMPILER__A2_unscanned_Debug C$:/Users/tonya/Desktop/a2/Service.cpp || cmake_object_order_depends_target_A2
+  DEP_FILE = CMakeFiles\A2.dir\Service.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\A2.dir
+  OBJECT_FILE_DIR = CMakeFiles\A2.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target A2
@@ -99,7 +105,7 @@ build CMakeFiles/A2.dir/Event.cpp.obj: CXX_COMPILER__A2_unscanned_Debug C$:/User
 #############################################
 # Link the executable A2.exe
 
-build A2.exe: CXX_EXECUTABLE_LINKER__A2_Debug CMakeFiles/A2.dir/Request.cpp.obj CMakeFiles/A2.dir/FileReader.cpp.obj CMakeFiles/A2.dir/ProcessParams.cpp.obj CMakeFiles/A2.dir/main.cpp.obj CMakeFiles/A2.dir/Landing.cpp.obj CMakeFiles/A2.dir/Complete.cpp.obj CMakeFiles/A2.dir/Event.cpp.obj
+build A2.exe: CXX_EXECUTABLE_LINKER__A2_Debug CMakeFiles/A2.dir/Request.cpp.obj CMakeFiles/A2.dir/FileReader.cpp.obj CMakeFiles/A2.dir/ProcessParams.cpp.obj CMakeFiles/A2.dir/main.cpp.obj CMakeFiles/A2.dir/Landing.cpp.obj CMakeFiles/A2.dir/Complete.cpp.obj CMakeFiles/A2.dir/Event.cpp.obj CMakeFiles/A2.dir/Service.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\A2.dir

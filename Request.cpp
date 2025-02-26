@@ -12,17 +12,31 @@ void Request::process(ProcessParams& p) {
     if (runwayIndex != -1) // has a free runway
     {
         Event* newLanding = new Landing(getTime(), getPlane(), runwayIndex);
+        p.getRunway()[runwayIndex] = false; //busy the runway
         p.getEventQueue()->enqueue(newLanding);
     }
     else
     {
         p.getWaitingList()->enqueue(getPlane());
     }
+
+    string reqType = " inbound for landing.";
+
+    if (getPlane()->getType() == 1)
+    {
+        reqType = " ready for takeoff.";
+    }
+
+    string output = "TIME: " + std::to_string(getTime()) + " -> " + getPlane()->getAirLine() + " " + getPlane()->getFlightNum() + " (" + std::to_string(getPlane()->getAtcID()) + ") " + Plane::weightToString(getPlane()->getWeight()) + reqType;
+    std::cout << output << std::endl;
+
     Event::removePlane();
 
     Event* newRequest = p.getFileReader()->getNextEvent();
-    p.getEventQueue()->enqueue(newRequest);
-
+    if(newRequest != nullptr)
+    {
+        p.getEventQueue()->enqueue(newRequest);
+    }
 
 }
 
