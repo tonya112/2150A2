@@ -2,6 +2,7 @@
 #define PROCESSPARAMS_H
 
 #include "PriorityQueue.h"
+#include "FileReader.h"
 
 class ProcessParams {
 private:
@@ -9,17 +10,20 @@ private:
     int sizeRW;
     PriorityQueue* eventQueue;
     PriorityQueue* waitingList;
+    FileReader* fileReader;
 
 
 public:
-    ProcessParams(bool* rw, int size, PriorityQueue* eq, PriorityQueue* wl)
-            : runway(rw), sizeRW(size), eventQueue(eq), waitingList(wl){}
+    ProcessParams(bool* rw, int size, PriorityQueue* eq, PriorityQueue* wl, FileReader* fr)
+            : runway(rw), sizeRW(size), eventQueue(eq), waitingList(wl), fileReader(fr){}
 
     bool* getRunway();
 
     PriorityQueue* getEventQueue();
 
     PriorityQueue* getWaitingList();
+
+    FileReader* getFileReader();
 
     int checkRunway();
 };

@@ -25,3 +25,7 @@ int ProcessParams::checkRunway() {
 
     return index;
 }
+
+FileReader *ProcessParams::getFileReader() {
+    return fileReader;
+}

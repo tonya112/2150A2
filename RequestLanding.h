@@ -1,16 +1,15 @@
-#ifndef RequestLanding_H
-#define RequestLanding_H
+//
+// Created by tonya on 2025-02-25.
+//
 
-#include "Event.h"
+#ifndef A2_REQUESTLANDING_H
+#define A2_REQUESTLANDING_H
 
-class RequestLanding : public Event{
-private:
+#include "Request.h"
 
+class RequestLanding : public Request {
 public:
-    RequestLanding(int time, Plane* planePtr);
-
-    void process(ProcessParams& p) override;
+    RequestLanding(int time, Plane* planePtr): Request(time, planePtr) {};
 };
 
-
-#endif //RequestLanding_H
+#endif //A2_REQUESTLANDING_H

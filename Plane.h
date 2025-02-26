@@ -12,24 +12,41 @@ enum Weight {
     super=3
 };
 
-class Plane : ListItem{
+class Plane : public ListItem{
 private:
     static int idCounter;
     string airLine;
-    int flightNum;
+    string flightNum;
     Weight weight;
     int ATC_ID;
+    int time;
+    int type;
 
 public:
-    Plane(const string& airLine, int flightNum, Weight weight);
+    Plane(const string& airLine, string flightNum, Weight weight, int time, int type);
 
     string getAirLine() const;
 
-    int getFlightNum() const;
+    string getFlightNum() const;
 
     int getAtcID() const;
 
     Weight getWeight() const;
+
+    int getTime() const;
+
+    int getType() const; //1 takeoff 0 landing
+
+    bool compare(ListItem* other) override;
+
+    static Weight stringToWeight(const std::string& size) {
+        if (size == "small") return small;
+        if (size == "large") return large;
+        if (size == "heavy") return heavy;
+        if (size == "super") return super;
+        throw std::invalid_argument("Invalid weight type: " + size);
+    }
+
 
 
 

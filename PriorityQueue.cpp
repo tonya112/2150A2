@@ -6,10 +6,27 @@ PriorityQueue::~PriorityQueue() { clear(); }
 
 void PriorityQueue::enqueue(ListItem* p) {
     Node* newNode = new Node(p);
+
     if (isEmpty()) {
         front = rear = newNode;
-    } else {
-        rear->setNext(newNode);
+        return;
+    }
+
+    if (p->compare(front->getItem())) {
+        newNode->setNext(front);
+        front = newNode;
+        return;
+    }
+
+    Node* current = front;
+    while (current->getNext() != nullptr && !p->compare(current->getNext()->getItem())) {
+        current = current->getNext();
+    }
+
+    newNode->setNext(current->getNext());
+    current->setNext(newNode);
+
+    if (newNode->getNext() == nullptr) {
         rear = newNode;
     }
 }

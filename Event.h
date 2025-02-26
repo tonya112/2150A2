@@ -17,9 +17,14 @@ public:
     Event(int time, Plane* planePtr)
         : eventTime(time), plane(planePtr){}
 
-    virtual ~Event(){}
+    virtual ~Event(){delete(plane);}
 
     virtual void process(ProcessParams& p) = 0;
+
+    void removePlane()
+    {
+        plane = nullptr;
+    }
 
     int getTime() const { return eventTime; }
 
