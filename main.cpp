@@ -21,8 +21,15 @@ int main(int argc, char* argv[]) {
 
     while(!eventQueue->isEmpty())
     {
-        Event* event = dynamic_cast<Event *>(eventQueue->dequeue());
-        event->process(*infoState);
+        Event* nextEvent = dynamic_cast<Event*>(eventQueue->dequeue());
+        if(nextEvent != nullptr)
+        {
+            nextEvent->process(*infoState);
+        }
+        else
+        {
+            cout << "Error: Invalid event type" << endl;
+        }
 
     }
 

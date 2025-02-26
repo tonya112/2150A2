@@ -7,6 +7,7 @@ Request::Request(int time, Plane* planePtr) : Event(time, planePtr) {
 }
 
 void Request::process(ProcessParams& p) {
+
     int runwayIndex = p.checkRunway();
 
     if (runwayIndex != -1) // has a free runway
@@ -33,6 +34,8 @@ void Request::process(ProcessParams& p) {
     Event::removePlane();
 
     Event* newRequest = p.getFileReader()->getNextEvent();
+
+
     if(newRequest != nullptr)
     {
         p.getEventQueue()->enqueue(newRequest);

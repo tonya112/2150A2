@@ -15,9 +15,7 @@ FileReader::~FileReader() {
 
 Event* FileReader::getNextEvent() {
     std::string line;
-    if (getline(inputFile, line)) { // 读取下一行
-
-        std::cout << line << std::endl;
+    if (getline(inputFile, line)) {
 
         std::stringstream sst(line);
         string token;

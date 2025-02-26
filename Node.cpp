@@ -3,9 +3,7 @@
 Node::Node(ListItem* e, Node* nextNode) : item(e), next(nextNode) {}
 
 // Destructor: ensures proper cleanup.
-Node::~Node() {
-    delete item;  // Ensure we free the memory.
-}
+Node::~Node() {}
 
 // Get the item stored in the node.r
 ListItem* Node::getItem() const {

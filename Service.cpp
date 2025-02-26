@@ -9,7 +9,6 @@ Service::Service(int time, Plane* planePtr, int runway) : Event(time, planePtr),
 void Service::process(ProcessParams &p) {
 
     Complete* newCompleteEvent = new Complete(getTime() + getPlane()->getSetupTime(), getPlane(), runway);
-    Event::removePlane();
 
     p.getEventQueue()->enqueue(newCompleteEvent);
 
@@ -19,7 +18,7 @@ void Service::process(ProcessParams &p) {
         eventType = "takeoff";
     }
 
-    string output = "TIME: " + std::to_string(getTime()) + " -> " + getPlane()->getAirLine() + " " + getPlane()->getFlightNum() + " (" + std::to_string(getPlane()->getAtcID()) + ") " + Plane::weightToString(getPlane()->getWeight()) + " cleared for " + eventType + " on runway " + std::to_string(runway+1) + ". (time req. for " + eventType + ": " + std::to_string(getPlane()->getSetupTime());
+    string output = "TIME: " + std::to_string(getTime()) + " -> " + getPlane()->getAirLine() + " " + getPlane()->getFlightNum() + " (" + std::to_string(getPlane()->getAtcID()) + ") " + Plane::weightToString(getPlane()->getWeight()) + " cleared for " + eventType + " on runway " + std::to_string(runway+1) + ". (time req. for " + eventType + ": " + std::to_string(getPlane()->getSetupTime()) + +")";
     std::cout << output << std::endl;
 
 }
