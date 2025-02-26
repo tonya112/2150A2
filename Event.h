@@ -35,6 +35,7 @@ public:
         const Event* otherEvent = dynamic_cast<Event*>(other);
 
         return eventTime < otherEvent->eventTime;
+
     }
 };
 
