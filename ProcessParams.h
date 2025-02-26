@@ -13,10 +13,13 @@ private:
     PriorityQueue* eventQueue;
     PriorityQueue* waitingList;
     FileReader* fileReader;
+    int* timeWasted;
 
 
 public:
-    ProcessParams(bool* rw, int size, PriorityQueue* eq, PriorityQueue* wl, FileReader* fr);
+    ProcessParams(bool* rw, int size, PriorityQueue* eq, PriorityQueue* wl, FileReader* fr, int* timeWasted);
+
+    ~ProcessParams();
 
     bool* getRunway();
 
@@ -25,6 +28,10 @@ public:
     PriorityQueue* getWaitingList();
 
     FileReader* getFileReader();
+
+    int* getTimeWasted();
+
+    void addTimeWasted(int time);
 
     int checkRunway();
 };

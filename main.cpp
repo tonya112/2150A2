@@ -9,8 +9,9 @@ int main(int argc, char* argv[]) {
     PriorityQueue* planeWaitingList = new PriorityQueue();
     PriorityQueue* eventQueue= new PriorityQueue();
     bool* runway = new bool[numRunways];
+    int timeWasted = 0;
 
-    ProcessParams* infoState = new ProcessParams(runway, numRunways, eventQueue, planeWaitingList, fileReader);
+    ProcessParams* infoState = new ProcessParams(runway, numRunways, eventQueue, planeWaitingList, fileReader, &timeWasted);
 
     Event* event = fileReader->getNextEvent();
     if(event != nullptr)
@@ -25,6 +26,7 @@ int main(int argc, char* argv[]) {
         if(nextEvent != nullptr)
         {
             nextEvent->process(*infoState);
+            delete(nextEvent);
         }
         else
         {
@@ -32,6 +34,15 @@ int main(int argc, char* argv[]) {
         }
 
     }
+
+    //ending promote
+    cout<<"#######################"<<endl;
+    cout<<"The simulation has ended."<<endl;
+    cout<<"The number of runways was " + std::to_string(numRunways) + "."<< endl;
+    cout<<"The total amount of time wasted because runways were not available was " + to_string(timeWasted) + " minutes."<<endl;
+    cout<<"#######################"<<endl;
+
+    delete(infoState);
 
     return 0;
 }

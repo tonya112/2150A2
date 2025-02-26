@@ -24,20 +24,29 @@ int Plane::getType() const {
 bool Plane::compare(ListItem *other) {
     const Plane* otherPlane = dynamic_cast<Plane*>(other);
 
-    if(time == otherPlane->time)
+//    if(time == otherPlane->time)
+//    {
+//        if(type == otherPlane->type)
+//        {
+//            return ATC_ID < otherPlane->ATC_ID;
+//        }
+//        else
+//        {
+//            return type < otherPlane->type;
+//        }
+//    }
+//    else
+//    {
+//        return time < otherPlane->time;
+//    }
+
+    if(type == otherPlane->type)
     {
-        if(type == otherPlane->type)
-        {
-            return ATC_ID < otherPlane->ATC_ID;
-        }
-        else
-        {
-            return type < otherPlane->type;
-        }
+        return ATC_ID < otherPlane->ATC_ID;
     }
     else
     {
-        return time < otherPlane->time;
+        return type < otherPlane->type;
     }
 
 }

@@ -21,4 +21,6 @@ void Service::process(ProcessParams &p) {
     string output = "TIME: " + std::to_string(getTime()) + " -> " + getPlane()->getAirLine() + " " + getPlane()->getFlightNum() + " (" + std::to_string(getPlane()->getAtcID()) + ") " + Plane::weightToString(getPlane()->getWeight()) + " cleared for " + eventType + " on runway " + std::to_string(runway+1) + ". (time req. for " + eventType + ": " + std::to_string(getPlane()->getSetupTime()) + +")";
     std::cout << output << std::endl;
 
+    removePlane();
+
 }

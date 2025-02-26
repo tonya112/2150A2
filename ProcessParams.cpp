@@ -2,8 +2,8 @@
 
 
 
-ProcessParams::ProcessParams(bool* rw, int size, PriorityQueue* eq, PriorityQueue* wl, FileReader* fr)
-        : runway(rw), sizeRW(size), eventQueue(eq), waitingList(wl), fileReader(fr){
+ProcessParams::ProcessParams(bool* rw, int size, PriorityQueue* eq, PriorityQueue* wl, FileReader* fr, int* timeWasted)
+        : runway(rw), sizeRW(size), eventQueue(eq), waitingList(wl), fileReader(fr), timeWasted(timeWasted){
 
     for(int i = 0; i < sizeRW; i++)
     {
@@ -37,6 +37,22 @@ int ProcessParams::checkRunway() {
 
 FileReader *ProcessParams::getFileReader() {
     return fileReader;
+}
+
+int *ProcessParams::getTimeWasted() {
+    return timeWasted;
+}
+
+void ProcessParams::addTimeWasted(int time) {
+    *timeWasted += time;
+}
+ProcessParams::~ProcessParams() {
+    delete runway;
+    delete eventQueue;
+    delete waitingList;
+    delete fileReader;
+
+    std::cout<< "ProcessParams Destructor" << std::endl;
 }
 
 

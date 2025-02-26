@@ -12,7 +12,13 @@ void Complete::process(ProcessParams& p) {
 
     if (!p.getWaitingList()->isEmpty()){
         Plane* waitingPlane = dynamic_cast<Plane*>(p.getWaitingList()->dequeue());
+
         Service* newService = new Service(getTime(), waitingPlane, runwayNum);
+        p.getRunway()[runwayNum] = false; //busy the runway
+
+        int timeWaiting = getTime() - waitingPlane->getTime();
+        p.addTimeWasted(timeWaiting);
+
         p.getEventQueue()->enqueue(newService);
     }
 

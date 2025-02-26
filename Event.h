@@ -18,7 +18,18 @@ public:
     Event(int time, Plane* planePtr)
         : eventTime(time), plane(planePtr){}
 
-    virtual ~Event(){delete(plane);}
+    virtual ~Event(){
+        std::cout<<"event released"<<std::endl;
+        if(plane != nullptr)
+        {
+            delete(plane);
+        }
+        else
+        {
+            std::cout<<"plane is null"<<std::endl;
+        }
+
+    }
 
     virtual void process(ProcessParams& p) = 0;
 
